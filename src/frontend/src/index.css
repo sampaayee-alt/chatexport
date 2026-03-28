@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 200 700;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Light mode — page body is the light gray */
+    --background: 0.965 0.006 240;
+    --foreground: 0.22 0.03 240;
+    --card: 1 0 0;
+    --card-foreground: 0.22 0.03 240;
+    --popover: 1 0 0;
+    --popover-foreground: 0.22 0.03 240;
+
+    /* Primary = action blue */
+    --primary: 0.57 0.175 248;
+    --primary-foreground: 0.98 0.005 240;
+
+    --secondary: 0.93 0.01 240;
+    --secondary-foreground: 0.28 0.038 236;
+
+    --muted: 0.93 0.01 240;
+    --muted-foreground: 0.52 0.02 240;
+
+    --accent: 0.92 0.045 240;
+    --accent-foreground: 0.28 0.038 236;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.012 240;
+    --input: 0.88 0.012 240;
+    --ring: 0.57 0.175 248;
+
+    /* Chat bubble tokens */
+    --bubble-user: 0.91 0.01 240;
+    --bubble-ai: 0.92 0.05 240;
+
+    /* Navy for header/footer */
+    --navy: 0.275 0.04 236;
+    --navy-foreground: 0.97 0.008 240;
+
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.985 0 0;
+    --sidebar-foreground: 0.145 0 0;
+    --sidebar-primary: 0.205 0 0;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.97 0 0;
+    --sidebar-accent-foreground: 0.205 0 0;
+    --sidebar-border: 0.922 0 0;
+    --sidebar-ring: 0.708 0 0;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+}
+
+/* ===== Print Styles for PDF Export ===== */
+@media print {
+  body > *:not(#print-area) {
+    display: none !important;
+  }
+  #print-area {
+    display: block !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  body {
+    background: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    margin: 0;
+    padding: 0;
+  }
+  #chat-print-content {
+    padding: 20pt;
+    max-width: 100%;
+  }
+  .print-message {
+    margin-bottom: 16pt;
+    page-break-inside: avoid;
+  }
+  .print-message-header {
+    font-weight: bold;
+    font-size: 10pt;
+    margin-bottom: 4pt;
+    color: #333;
+  }
+  .print-message-body {
+    background: #f5f5f5;
+    border-radius: 4pt;
+    padding: 8pt 12pt;
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+  .print-message-body.ai {
+    background: #e8f4ff;
+  }
+  pre,
+  code {
+    font-family: "Courier New", monospace;
+    background: #f0f0f0;
+    border: 1pt solid #ddd;
+    padding: 2pt 4pt;
+    border-radius: 2pt;
+  }
+  pre {
+    padding: 8pt;
+    overflow: visible;
+    white-space: pre-wrap;
+  }
+  .print-header-info {
+    border-bottom: 2pt solid #333;
+    padding-bottom: 12pt;
+    margin-bottom: 20pt;
+  }
+  .print-header-info h1 {
+    font-size: 18pt;
+    margin: 0 0 4pt 0;
+  }
+  .print-header-info p {
+    font-size: 10pt;
+    color: #666;
+    margin: 0;
+  }
+}
